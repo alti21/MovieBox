@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getMovieInfo } from "../services/MoviesAPI";
 import SearchResult from "./SearchResult";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import SearchBar from "./SearchBar";
 
 const Search = () => {
   const [movieResult, setMovieResult] = useState({});
@@ -23,11 +24,7 @@ const Search = () => {
   return (
     <>
       <header>
-        <input
-          type="text"
-          placeholder="Search for a movie"
-          className="search-bar"
-        />
+        <SearchBar />
       </header>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="id-1">
