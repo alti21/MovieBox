@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getMovieInfo } from "../services/MoviesAPI";
 
 const Search = () => {
+  useEffect(() => {
+    getMovieInfo().then((data) => {
+      console.log(data);
+    });
+    // console.log(getMovieInfo());
+  });
+
   return (
     <header>
       <input
