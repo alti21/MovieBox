@@ -20,8 +20,11 @@
 }
 
 .movie-container {
-  width: 200px;
-  margin-left: 30%;
+  width: 400px;
+  margin: 0 auto;
+  padding: 1em 3em 5em 3em;
+  border: 3px solid #000;
+  border-radius: 30px;
 }
 
 .movie-poster {
