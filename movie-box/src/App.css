@@ -14,7 +14,33 @@
   border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.movie {
+  width: 400px;
+  margin: 0 auto;
 }
 
+.movie-container {
+  width: 200px;
+  margin-left: 30%;
+}
+
+.movie-poster {
+  float: left;
+  width: 200px;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-info > * {
+  margin: 1em .5em;
+}
+
+/*
+.movie-info > div > * {
+  display: inline-block;
+  margin: 1em;
+}
+*/

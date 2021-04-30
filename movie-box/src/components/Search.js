@@ -1,23 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getMovieInfo } from "../services/MoviesAPI";
+import SearchResult from "./SearchResult";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 const Search = () => {
+  const [movieResult, setMovieResult] = useState({});
+
   useEffect(() => {
     getMovieInfo().then((data) => {
-      console.log(data);
+      //console.log(data);
+      setMovieResult(data);
     });
-    // console.log(getMovieInfo());
-  });
+  }, []);
+
+  console.log(movieResult);
+
+  const onDragEnd = (result) => {
+    // reorder our column
+    console.log(result);
+  };
 
   return (
-    <header>
-      <input
-        type="text"
-        placeholder="Search for a movie"
-        className="search-bar"
-      />
-    </header>
+    <>
+      <header>
+        <input
+          type="text"
+          placeholder="Search for a movie"
+          className="search-bar"
+        />
+      </header>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="id-1">
+          {(provided) => (
+            <div
+              className="movie-container"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              <SearchResult movie={movieResult}>
+                {provided.placeholder}
+              </SearchResult>
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </>
   );
 };
-
+//put search bar into its own component
 export default Search;
